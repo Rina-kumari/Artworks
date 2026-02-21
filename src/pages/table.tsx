@@ -44,11 +44,7 @@ function TablePage() {
         </p>
       )}
 
-      {loading ? (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
-          <i className="pi pi-spin pi-spinner" style={{ fontSize: '2rem' }} />
-        </div>
-      ) : (
+
         <>
           <DataTable
             value={artworks}
@@ -59,6 +55,14 @@ function TablePage() {
             onSelectionChange={(e) => setSelectedArtworks(e.value)}
             dataKey="id"
             tableStyle={{ minWidth: '50rem' }}
+          emptyMessage={
+  loading ? (
+    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '400px', gap: '0.5rem' }}>
+      <i className="pi pi-spin pi-spinner" style={{ fontSize: '2rem' }} />
+      <span style={{ fontSize: '0.8rem', color: 'var(--text-color-secondary)' }}>Loading artworks...</span>
+    </div>
+  ) : ''
+}
             pt={{
               thead: { style: { borderTop: '1px solid var(--surface-d)' } },
               column: {
@@ -81,16 +85,17 @@ function TablePage() {
             <Column field="title" header="TITLE"
               pt={{ bodyCell: { style: { fontWeight: 'bold' } } }}
             />
-            <Column field="place_of_origin" header="PLACE OF ORIGIN" style={{ width: '5%' }} />
+            <Column field="place_of_origin" header="PLACE OF ORIGIN" style={{ width: '10%' }} />
             <Column field="artist_display" header="ARTIST" style={{ maxWidth: '0', width: '20%' }} body={(rowData: Artwork) => truncateBody(rowData.artist_display)} />
             <Column field="inscriptions" header="INSCRIPTIONS" style={{ maxWidth: '0', width: '20%' }} body={(rowData: Artwork) => truncateBody(rowData.inscriptions)} />
             <Column field="date_start" header="START DATE" style={{ width: '5%' }} />
             <Column field="date_end" header="END DATE" style={{ width: '5%' }} />
           </DataTable>
 
-          <PaginatorComponent />
+  
+     <PaginatorComponent />
         </>
-      )}
+    
     </div>
   );
 }

@@ -20,7 +20,7 @@ const initialTableState: TableState = {
 export const tableDataReducer = ( state = initialTableState, action: TableAction ) : TableState => {
   switch (action.type) {
     case TABLE_DATA_REQUEST:
-      return { ...state, loading: true, error: undefined };
+      return { ...state, loading: true, error: undefined, artworks: [] };
 
     case TABLE_DATA_SUCCESS:
       return { loading: false, artworks: action.payload as Artwork[] };
