@@ -47,7 +47,7 @@ function TablePage() {
 
         <>
           <DataTable
-            value={artworks}
+            
             size="small"
             stripedRows
             selectionMode="checkbox"
@@ -55,14 +55,13 @@ function TablePage() {
             onSelectionChange={(e) => setSelectedArtworks(e.value)}
             dataKey="id"
             tableStyle={{ minWidth: '50rem' }}
-          emptyMessage={
-  loading ? (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '400px', gap: '0.5rem' }}>
-      <i className="pi pi-spin pi-spinner" style={{ fontSize: '2rem' }} />
-      <span style={{ fontSize: '0.8rem', color: 'var(--text-color-secondary)' }}>Loading artworks...</span>
-    </div>
-  ) : ''
-}
+            value={loading ? [] : artworks}
+            emptyMessage={
+              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '400px', gap: '0.5rem' }}>
+                <i className="pi pi-spin pi-spinner" style={{ fontSize: '2rem' }} />
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-color-secondary)' }}>Loading artworks...</span>
+              </div>
+            }
             pt={{
               thead: { style: { borderTop: '1px solid var(--surface-d)' } },
               column: {
@@ -92,7 +91,6 @@ function TablePage() {
             <Column field="date_end" header="END DATE" style={{ width: '5%' }} />
           </DataTable>
 
-  
      <PaginatorComponent />
         </>
     

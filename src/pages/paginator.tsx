@@ -28,6 +28,7 @@ function PaginatorComponent() {
           backgroundColor: 'white',
           width: '80px',
           height: '32px',
+          color: 'black',
         }}
       >
         <span>Previous</span>
@@ -40,7 +41,7 @@ function PaginatorComponent() {
         className={classNames(options.className)}
         onClick={options.onClick}
         disabled={options.disabled}
-        style={{ borderRadius: '4px', border: '1px solid #adb5bd', backgroundColor: 'white', width: '65px', height: '32px' }}
+        style={{ borderRadius: '4px', border: '1px solid #adb5bd', backgroundColor: 'white', width: '65px', height: '32px', color: 'black', }}
       >
         <span>Next</span>
         <Ripple />
@@ -57,8 +58,8 @@ function PaginatorComponent() {
             borderRadius: '4px',
             border: '1px solid #adb5bd',
             backgroundColor: isCurrentPage ? 'var(--primary-color)' : 'white',
-            color: isCurrentPage ? 'white' : 'inherit',
-            height: '32px', width: '32px', minWidth: 'unset', padding: '0'
+            color: isCurrentPage ? 'white' : 'black',
+            height: '32px', width: '32px', minWidth: 'unset', padding: '0', 
           }}
         >
           {options.page + 1}
